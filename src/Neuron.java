@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class Neuron {
     private List<Synapse> input;
-    private Synapse output;
+    private List<Synapse> output;
 
-    public Neuron(List<Synapse> input, Synapse output) {
+    public Neuron(List<Synapse> input, List<Synapse> output) {
         this.input = input;
         this.output = output;
     }
@@ -27,7 +27,7 @@ public class Neuron {
         return input;
     }
 
-    public Synapse getOutput() {
+    public List<Synapse> getOutput() {
         return output;
     }
 
@@ -35,7 +35,7 @@ public class Neuron {
         this.input = input;
     }
 
-    public void setOutput(Synapse output) {
+    public void setOutput(List<Synapse> output) {
         this.output = output;
     }
     
@@ -50,6 +50,9 @@ public class Neuron {
         
         res = 1 / (1 + Math.exp(-res));
         
-        output.setInput(res);
+        for (Synapse s : output)
+        {
+            s.setInput(res);
+        }
     }
 }
