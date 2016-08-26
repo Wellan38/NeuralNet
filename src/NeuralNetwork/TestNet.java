@@ -1,3 +1,5 @@
+package NeuralNetwork;
+
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -15,11 +17,12 @@ import java.util.Map;
  * @author Alexandre
  */
 public class TestNet {
+    
     public static void main(String[] args)
     {
         // Input neuron 1
-        Synapse x1 = new Synapse(0.5, 1);
-        Synapse y1 = new Synapse(0.2);
+        Synapse x1 = new Synapse(Math.random(), 1);
+        Synapse y1 = new Synapse(Math.random());
         
         List<Synapse> i1 = new ArrayList();
         i1.add(x1);
@@ -30,8 +33,8 @@ public class TestNet {
         Neuron n1 = new Neuron(i1, o1);
         
         // Input neuron 2
-        Synapse x2 = new Synapse(0.4, 1);
-        Synapse y2 = new Synapse(0.3);
+        Synapse x2 = new Synapse(Math.random(), 1);
+        Synapse y2 = new Synapse(Math.random());
         
         List<Synapse> i2 = new ArrayList();
         i2.add(x2);
@@ -46,7 +49,7 @@ public class TestNet {
         h.add(y1);
         h.add(y2);
         
-        Synapse z = new Synapse(0.3);
+        Synapse z = new Synapse(Math.random());
         
         List<Synapse> o3 = new ArrayList();
         o3.add(z);
@@ -81,7 +84,7 @@ public class TestNet {
         
         NeuralNetwork net = new NeuralNetwork(input, hidden, output, desired);
         
-        for (int i = 1; i <= 1000; i++)
+        for (int i = 1; i <= 4000; i++)
         {
             Double s1, s2;
             
@@ -105,7 +108,15 @@ public class TestNet {
             
             Double des;
             
-            if (s1 == 1 || s2 == 1)
+//            if (s1 == 1 || s2 == 1)
+//            {
+//                des = 1.;
+//            }
+//            else
+//            {
+//                des = 0.;
+//            }
+            if (s1 == 1)
             {
                 des = 1.;
             }

@@ -1,3 +1,5 @@
+package NeuralNetwork;
+
 
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class Neuron {
 
     public Neuron(List<Synapse> input, List<Synapse> output) {
         this.input = input;
+        this.input.add(new Synapse(1, Math.random()));
         this.output = output;
     }
 
@@ -44,11 +47,10 @@ public class Neuron {
         double res = 0;
         for (Synapse s : input)
         {
-            s.compute();
-            res += s.getOutput();
+            res += s.compute();
         }
         
-        res = 1 / (1 + Math.exp(-res));
+        res = (float)(1. / (1. + Math.exp(-res)));
         
         for (Synapse s : output)
         {
